@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografi pribadi</title>
+    <style>
+        
+        :root {
+            --cream: #FFF5EB;
+            --soft-blue: #E0F4FF;
+            --peach: #FFD8A9;
+            --mint: #D2E3C8;
+            --dusty-pink: #F4BFBF;
+            --text: #3A3845;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Pacifico', cursive;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--peach);
+        }
+        
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 5rem 0;
+            gap: 3rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-color: var(--soft-blue);
+            border-radius: 0 0 0 100px;
+            z-index: -1;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 15px 15px 0 var(--peach);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        
+        .title {
+            color: var(--text);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background-color: var(--mint);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            color: var(--text);
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background-color: var(--dusty-pink);
+            color: white;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 5px;
+            background-color: var(--dusty-pink);
+            border-radius: 5px;
+        }
+        
+        /* Profile Section */
+        .profile-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .profile-text {
+            flex: 1;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 5px 5px 0 var(--mint);
+        }
+        
+        .profile-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .profile-image {
+            flex: 1;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: -15px 15px 0 var(--peach);
+        }
+        
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--dusty-pink), var(--peach));
+            border-radius: 5px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--peach);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        /* Hobbies Grid */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .hobby-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hobby-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .hobby-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .hobby-card:hover .hobby-image img {
+            transform: scale(1.1);
+        }
+        
+        .hobby-text {
+            padding: 1.5rem;
+        }
+        
+        .hobby-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--soft-blue);
+            border-radius: 30px;
+            padding: 4rem;
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+            font-size: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--dusty-pink);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-column: span 2;
+            justify-self: center;
+            width: 200px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: white;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero::before {
+                width: 100%;
+                height: 50%;
+                border-radius: 0;
+            }
+            
+            .hero-image img {
+                margin-top: 2rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .profile-content {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+                border-right: 10px solid white;
+                border-left: none;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">BiodataKu</div>
+                <div class="nav-links">
+                    <a href="#profile">Profil</a>
+                    <a href="#education">Pendidikan</a>
+                    <a href="#hobbies">Hobi</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-text">
+                <span class="title">Hai!!</span>
+                <h1>Fransina Marumbela</h1>
+                <p>Saya adalah seorang Mahasiswa di Universitas Kristen Indonesia Maluku yang sedang menempuh studi di bidang Teknik Informatika.</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="icon sincan.jpg" alt="">
+            </div>
+        </section>
+
+        <section id="profile" style="padding-bottom: 2rem;">
+            <h2 class="section-title">Profil Singkat</h2>
+            <div class="profile-content" style="margin-bottom: 4rem;">
+                <div class="profile-text">
+                    
+                    <p>Saya memiliki minat dalam bidang jaringan komputer dan berdedikasi untuk mengembangkan kemampuan saya dalam bidang tersebut. Saya percaya bahwa 'Kesuksesan bukanlah tentang seberapa tinggi Anda berada, tapi seberapa jauh Anda telah melangkah untuk mencapai tujuan Anda.' Saya berkomitmen untuk terus belajar dan berkembang untuk mencapai tujuan saya</p>
+                   
+                </div>
+        
+            </div>
+        </section>
+
+        <section id="education" style="background-color: var(--soft-blue); border-radius: 30px; margin-top: 3rem;">
+            <h2 class="section-title" style="padding-top: 2rem;">Riwayat Pendidikan</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        
+                        <h3>SEKOLAH DASAR</h3>
+                        <p>saya bersekolah di SD NEGERI 1 TEPA</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                       
+                        <h3>SEKOLAH MENENGAH PERTAMA</h3>
+                        <p>saya bersekolah di SMP KRISTEN 1 P.P BABAR</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                       
+                        <h3>SEKOLAH MENENGAH AKHIR</h3>
+                        <p>saya bersekolah di SMA NEGERI 5 MALUKU BARAT DAYA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2 class="section-title">Hobi & Kesukaan</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-image">
+                        <img src="bernyanyi.jpeg" alt="">
+                    </div>
+                    <div class="hobby-text">
+                        <h3>Mendengarkan Musik</h3>
+                        <p>Musik bukan hanya sekadar hiburan bagiku; ia adalah medium yang menghubungkan aku dengan orang lain dan memungkinkan aku merasakan kedalaman pengalaman manusia. Saat aku mendengarkan lagu-lagu favoritku, aku sering merasa seolah-olah aku sedang berbicara dengan jiwa-jiwa lain, berbagi cerita dan perasaan yang sama meskipun kita terpisah oleh waktu dan ruang.</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-image">
+                       <img src="membaca.jpeg" alt="">
+                    </div>
+                    <div class="hobby-text">
+                        <h3>Membaca Buku</h3>
+                        <p>Membaca adalah jendela dunia, dan saya senang mengexplore pengetahuan baru."
+- "Saya suka membaca buku karena membuat saya lebih bijak dan berwawasan luas."
+- "Membaca adalah hobi saya yang paling favorit, karena membuat saya bisa melarikan diri ke dunia lain.</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-image">
+                      <img src="menamam bunga.jpeg" alt="">
+                    </div>
+                    <div class="hobby-text">
+                        <h3>Menanam Bunga</h3>
+                        <p>Menanam bunga membuat saya merasa dekat dengan alam dan menciptakan keindahan."
+- "Saya suka menanam bunga karena membuat saya merasa bahagia dan rileks."
+- "Menanam bunga adalah cara saya untuk mengekspresikan kreativitas dan cinta saya pada alam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Yuk Ngobrol!</h2>
+            <div class="contact-section">
+                <p>Kalau mau kenalan lebih dekat,bisa hubungi saya lewat form ini ya!</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Kamu" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <input type="text" placeholder="Subjek">
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea placeholder="Pesan kamu..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Dibuat dengan ❤ oleh Syna Mrblla| © 2025 All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome untuk icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript untuk efek scroll halus
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animasi saat scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.timeline-item, .hobby-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Set initial state for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.timeline-item, .hobby-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>
